@@ -127,10 +127,7 @@ export default function MiniDrawer() {
 
     const open_submenu = (index: number) => {
         var tmp = Array.from(submenuOpen);
-        console.log(index);
-        console.log(tmp);
         tmp[index] = !submenuOpen[index];
-        console.log(tmp);
         setSubmenuOpen(tmp);
     }
 
