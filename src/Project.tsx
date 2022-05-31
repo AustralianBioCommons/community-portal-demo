@@ -7,9 +7,9 @@ import {
     Collapse,
     ListItem,
     Paper,
-    PaperProps,
+    PaperProps, Table, TableBody, TableCell, TableContainer, TableRow,
     TextField,
-    Typography
+    Typography, withStyles
 } from "@mui/material";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -89,9 +89,20 @@ export const System = (system: systemType) =>
 </Box>
 
 export const Data = (data:dataType) =>
-<Box>
-    <Typography>{data.name}</Typography>
-</Box>
+<TableContainer variant="outlined" sx={{padding: 2, maxWidth: 360}} component={Paper}>
+    <Table >
+        <TableBody>
+            <TableRow >
+                <TableCell sx={{borderBottom: "none"}}><b>System:</b></TableCell>
+                <TableCell sx={{borderBottom: "none"}}>{data.system.name}</TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell sx={{borderBottom: "none"}}><b>Resource:</b></TableCell>
+                <TableCell sx={{borderBottom: "none"}}>{data.name}</TableCell>
+            </TableRow>
+        </TableBody>
+    </Table>
+</TableContainer>
 
 export default function Project (project: projectType) {
     const [userSelection, setUserSelection] = React.useState<userType | null>(null);
@@ -143,7 +154,7 @@ export default function Project (project: projectType) {
             )}
         </List>
     </CollapsiblePaper>
-    <CollapsiblePaper header={<Typography>Data:</Typography>} elevation={2} sx={{marginBottom: 2, padding: 2}} >
+    <CollapsiblePaper header={<Typography>Data-Resources:</Typography>} elevation={2} sx={{marginBottom: 2, padding: 2}} >
         <List>
             {project.data.map((data) =>
             <ListItem>
